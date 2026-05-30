@@ -46,6 +46,10 @@ nnoremap <C-k> 3<C-e>
 nmap <C-i> <Action>(Forward)
 nmap <C-o> <Action>(Back)
 
+" Open Lines
+nnoremap <a-o> mao<ESC>`a
+nnoremap <a-s-o> maO<ESC>`a
+
 nnoremap / mz:action Find<CR>
 nnoremap n :action FindNext<CR>
 nnoremap N :action FindPrevious<CR>
