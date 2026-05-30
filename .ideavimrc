@@ -43,8 +43,8 @@ nnoremap <C-j> 3<C-y>
 nnoremap <C-k> 3<C-e>
 
 " Navigation actions
-nmap <C-i> <Action>(Back)
-nmap <C-o> <Action>(Forward)
+nmap <C-i> <Action>(Forward)
+nmap <C-o> <Action>(Back)
 
 nnoremap / mz:action Find<CR>
 nnoremap n :action FindNext<CR>
