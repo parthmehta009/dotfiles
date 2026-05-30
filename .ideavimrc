@@ -1,0 +1,245 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Do incremental searching
+" set incsearch
+" set hlsearch
+set showmode
+set rnu
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" use system clipboard for all operations (copy/paste)
+set clipboard+=unnamedplus
+set clipboard+=ideaput
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+set surround
+set multiple-cursors
+set argtextobj
+set ReplaceWithRegister
+set visualbell
+"set noerrorbell " not play bell sound
+
+" Plugin settings...
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" Idea specific settings
+set ideajoin
+set idearefactormode=keep
+set which-key
+set notimeout
+set timeoutlen=5000
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+nnoremap <C-j> 3<C-y>
+nnoremap <C-k> 3<C-e>
+
+" Navigation actions
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+nnoremap / mz:action Find<CR>
+nnoremap n :action FindNext<CR>
+nnoremap N :action FindPrevious<CR>
+vnoremap n <ESC>:action FindNext<CR>
+vnoremap N <ESC>:action FindPrevious<CR>
+nnoremap <C-g> `z
+
+" Faster line scrolling without moving pointer
+"nnoremap <C-y> 5<C-y>
+"nnoremap <C-e> 5<C-e>
+
+" leader key
+let mapleader = ' '
+map <leader>9 :source ~/.ideavimrc<CR>
+
+" Normal mode window management
+"<C-w>h Move cursor to the window on the left
+"<C-w>l Move cursor to the window on the right
+"<C-w>j Move cursor to the window below
+"<C-w>k Move cursor to the window above
+
+"<C-w>v Split window vertically
+"<C-w>s Split window horizontally
+
+"<C-w>c Close current window
+"<C-w>o Close all other windows
+
+" Resizing splits
+"nmap <C-w>< <Action>(StretchSplitLeft)
+"nmap <C-w>> <Action>(StretchSplitRight)
+"nmap <C-w>+ <Action>(StretchSplitUp)
+"nmap <C-w>- <Action>(StretchSplitDown)
+" Use Intellij default shortcuts
+" Ctrl Alt Shift Left/Right/Up/Down
+
+nmap <C-S-m> <Action>(ToolWindowsGroup)
+
+" Information commands
+nmap <leader>it <action>(ExpressionTypeInfo)
+nmap <leader>ip <action>(ParameterInfo)
+nmap <leader>ij <action>(QuickJavaDoc)
+nmap <leader>if <action>(FileStructurePopup)
+nmap <leader>ih <action>(CallHierarchy)
+nmap <leader>iu <action>(ShowUsages)
+nmap <leader>im <action>(QuickImplementations)
+
+let g:WhichKeyDesc_info = "<leader>i Information"
+let g:WhichKeyDesc_info_type = "<leader>it Expression Type Information"
+let g:WhichKeyDesc_info_param = "<leader>ip Parameter Info"
+let g:WhichKeyDesc_info_java_doc = "<leader>ij Quick Java Doc"
+let g:WhichKeyDesc_info_file_structure = "<leader>if File Structure"
+let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
+let g:WhichKeyDesc_info_usages = "<leader>iu Show Usages"
+let g:WhichKeyDesc_info_implementations = "<leader>im Quick Implementations"
+
+" Display options
+map <leader>Dd <action>(ToggleDistractionFreeMode)
+map <leader>Dz <action>(ToggleZenMode)
+map <leader>Df <action>(ToggleFullScreen)
+
+let g:WhichKeyDesc_display = "<leader>D Display"
+let g:WhichKeyDesc_display_distraction_free = "<leader>Dd Toggle Distraction Free Mode"
+let g:WhichKeyDesc_display_zen = "<leader>Dz Toggle Zen Mode"
+let g:WhichKeyDesc_display_full_screen = "<leader>Df Toggle Full Screen"
+
+" Run and Debug commands
+nmap <leader>dm <action>(RunMenu)
+nmap <leader>dr <action>(ContextRun)
+nmap <leader>dd <action>(Rerun)
+nmap <leader>ds <action>(Stop)
+nmap <leader>dR <action>(ChooseRunConfiguration)
+
+nmap <leader>dx <action>(ContextDebug)
+nmap <leader>dX <action>(ContextDebugConfiguration)
+nmap <leader>db <action>(ToggleLineBreakpoint)
+nmap <leader>dB <action>(XDebugger.MuteBreakpoints)
+nmap <leader>dv <action>(ViewBreakpoints)
+nmap <leader>de <action>(EditBreakpoint)
+nmap <leader>dC <action>(RunToCursor)
+nmap <leader>dA <action>(Debugger.RemoveAllBreakpoints)
+nmap <leader>di <action>(StepInto)
+nmap <leader>do <action>(StepOver)
+nmap <leader>dO <action>(StepOut)
+nmap <leader>dc <action>(Resume)
+nmap <leader>d= <action>(EvaluateExpression)
+
+let g:WhichKeyDesc_debug = "<leader>d Debug/Run"
+let g:WhichKeyDesc_debug_menu = "<leader>dm Run Menu"
+let g:WhichKeyDesc_debug_run = "<leader>dr Context Run"
+let g:WhichKeyDesc_debug_rerun = "<leader>dd Rerun"
+let g:WhichKeyDesc_debug_stop = "<leader>ds Stop"
+let g:WhichKeyDesc_debug_choose_run = "<leader>dR Choose Run Configuration"
+let g:WhichKeyDesc_debug_debug = "<leader>dx Context Debug"
+let g:WhichKeyDesc_debug_debug_configuration = "<leader>dX Context Debug Configuration"
+let g:WhichKeyDesc_debug_breakpoint = "<leader>db Toggle Line Breakpoint"
+let g:WhichKeyDesc_debug_mute_breakpoints = "<leader>dB Mute Breakpoints"
+let g:WhichKeyDesc_debug_view_breakpoints = "<leader>dv View Breakpoints"
+let g:WhichKeyDesc_debug_edit_breakpoint = "<leader>de Edit Breakpoint"
+let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
+let g:WhichKeyDesc_debug_remove_all_breakpoints = "<leader>dA Remove All Breakpoints"
+let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
+let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
+let g:WhichKeyDesc_debug_step_out = "<leader>dO Step Out"
+let g:WhichKeyDesc_debug_resume = "<leader>dc Resume"
+let g:WhichKeyDesc_debug_evaluate_expression = "<leader>d= Evaluate Expression"
+
+" Go to
+nmap <leader>gd <action>(GotoDeclaration)
+nmap <leader>gD <action>(GotoTypeDeclaration)
+nmap <leader>gi <action>(GotoImplementation)
+nmap <leader>go <action>(GotoSuperMethod)
+
+let g:WhichKeyDesc_goto = "<leader>g Go to"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Goto Declaration"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Goto Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Goto Implementation"
+let g:WhichKeyDesc_goto_super_method = "<leader>go Goto Super Method"
+
+" File Navigation
+nmap <leader>fo <action>(OpenFile)
+nmap <leader>fy <action>(CopyAbsolutePath)
+nmap <leader>fp <action>(ManageRecentProjects)
+nmap <leader>ff <action>(ShowFilePath)
+nmap <leader>fs <action>(SelectIn)
+
+let g:WhichKeyDesc_file = "<leader>f File Navigation"
+let g:WhichKeyDesc_file_open = "<leader>fo Open File"
+let g:WhichKeyDesc_file_copy_path = "<leader>fy Copy Absolute Path"
+let g:WhichKeyDesc_file_manage_projects = "<leader>fp Manage Recent Projects"
+let g:WhichKeyDesc_file_show_path = "<leader>ff Show File Path"
+let g:WhichKeyDesc_file_select_in = "<leader>fs Select In"
+
+" Refactoring (leader r)
+nmap <leader>rr <action>(Refactorings.QuickListPopupAction)
+nmap <leader>rn <action>(RenameElement)
+nmap <leader>rv <action>(IntroduceVariable)
+nmap <leader>rc <action>(IntroduceConstant)
+nmap <leader>rf <action>(IntroduceField)
+nmap <leader>rp <action>(IntroduceParameter)
+map <leader>rx <action>(ExtractMethod)
+nmap <leader>ri <action>(Inline)
+nmap <leader>rs <action>(ChangeSignature)
+nmap <leader>ra <action>(AnonymousToInner)
+nmap <leader>rm <action>(Move)
+nmap <leader>rg <action>(Generate)
+
+let g:WhichKeyDesc_refactor = "<leader>r Refactor"
+let g:WhichKeyDesc_refactor_quick_list = "<leader>rr Refactorings Quick List"
+let g:WhichKeyDesc_refactor_rename = "<leader>rn Rename Element"
+let g:WhichKeyDesc_refactor_variable = "<leader>rv Introduce Variable"
+let g:WhichKeyDesc_refactor_constant = "<leader>rc Introduce Constant"
+let g:WhichKeyDesc_refactor_field = "<leader>rf Introduce Field"
+let g:WhichKeyDesc_refactor_parameter = "<leader>rp Introduce Parameter"
+let g:WhichKeyDesc_refactor_extract_method = "<leader>rx Extract Method"
+let g:WhichKeyDesc_refactor_inline = "<leader>ri Inline"
+let g:WhichKeyDesc_refactor_change_signature = "<leader>rs Change Signature"
+let g:WhichKeyDesc_refactor_anonymous_to_inner = "<leader>ra Anonymous To Inner"
+let g:WhichKeyDesc_refactor_move = "<leader>rm Move"
+let g:WhichKeyDesc_refactor_generate = "<leader>rg Generate"
+
+map <leader>sw <action>(SurroundWith)
+let g:WhichKeyDesc_surround = "<leader>sw Surround With"
+
+nmap <leader>nc <action>(NewClass)
+let g:WhichKeyDesc_new_class = "<leader>nc New Class"
+
+" Error and diagnostics (leader e)
+map <leader>en :action GoToNextError<CR>
+map <leader>ep :action GoToPreviousError<CR>
+map <leader>ed :action ShowErrorDescription<CR>
+
+let g:WhichKeyDesc_error = "<leader>e Error and Diagnostics"
+let g:WhichKeyDesc_error_next = "<leader>en Go To Next Error"
+let g:WhichKeyDesc_error_previous = "<leader>ep Go To Previous Error"
+let g:WhichKeyDesc_error_description = "<leader>ed Show Error Description"
+
+" Bookmarks
+nmap <leader>bm <action>(Bookmarks)
+nmap <leader>bs <action>(ShowBookmarks)
+nmap <leader>bb <action>(ActivateBookmarksToolWindow)
+nmap <leader>bt <action>(ToggleBookmark)
+nmap <leader>be <action>(EditBookmark)
+nmap <leader>bp <action>(GotoPreviousBookmark)
+nmap <leader>bn <action>(GotoNextBookmark)
+
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks_manager = "<leader>bm Bookmarks Manager"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bs Show Bookmarks"
+let g:WhichKeyDesc_bookmarks_activate = "<leader>bb Activate Bookmarks Tool Window"
+let g:WhichKeyDesc_bookmarks_toggle = "<leader>bt Toggle Bookmark"
+let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
+let g:WhichKeyDesc_bookmarks_previous = "<leader>bp Goto Previous Bookmark"
+let g:WhichKeyDesc_bookmarks_next = "<leader>bn Goto Next Bookmark"
+
+" Which-key settings
+let g:WhichKey_FontSize = 14
+let g:WhichKey_CommandColor = "blue"
